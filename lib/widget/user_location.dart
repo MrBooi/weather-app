@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'current_date.dart';
 
 class UserLoaction extends StatelessWidget {
-  const UserLoaction({Key key}) : super(key: key);
+  final String address;
+  const UserLoaction({Key key, this.address}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class UserLoaction extends StatelessWidget {
                 width: 10.0,
               ),
               Text(
-                'Cape Town',
+                address ?? address.toString(),
                 style: TextStyle(
                     color: Theme.of(context).accentColor, fontSize: 20),
               ),

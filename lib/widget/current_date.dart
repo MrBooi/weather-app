@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../helpers/current_date.dart' as date;
 class CurrentDate extends StatelessWidget {
   const CurrentDate({Key key}) : super(key: key);
 
@@ -9,7 +9,7 @@ class CurrentDate extends StatelessWidget {
      Container(
       child: 
       Text(
-        'Tue, 07 January 18:42',
+        date.CurrentDate.todaysDate(),
         style: TextStyle(fontSize: 20, color: Colors.grey),
       ),
     );

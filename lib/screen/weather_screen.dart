@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
+import 'package:weather_app/helpers/location_helper.dart';
 import 'package:weather_app/screen/daily_screen.dart';
 import 'package:weather_app/screen/details_screen.dart';
 import 'package:weather_app/screen/locations_screen.dart';
@@ -11,8 +13,31 @@ import 'package:weather_app/widget/user_location.dart';
 import 'hourly_screen.dart';
 import 'life_index_screen.dart';
 
-class WeatherScreen extends StatelessWidget {
+class WeatherScreen extends StatefulWidget {
   const WeatherScreen({Key key}) : super(key: key);
+
+  @override
+  _WeatherScreenState createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends State<WeatherScreen> {
+  String _address;
+  _getCurrentLocation() async {
+    try {
+      final locData = await Location().getLocation();
+      final address = await LocationHelper.getPlaceAddress(
+          locData.latitude, locData.longitude);
+      setState(() {
+        _address = address;
+      });
+    } catch (e) {}
+  }
+
+  @override
+  void initState() {
+    _getCurrentLocation();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +71,9 @@ class WeatherScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            UserLoaction(),
+            UserLoaction(
+              address: _address,
+            ),
             Container(
               child: Column(
                 children: <Widget>[

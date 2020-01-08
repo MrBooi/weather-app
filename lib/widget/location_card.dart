@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import '../helpers/current_date.dart';
 
-class LocationCard extends StatelessWidget {
+class LocationCard extends StatefulWidget {
   final String location;
   final String address;
   final String weatherDegree;
@@ -13,6 +14,13 @@ class LocationCard extends StatelessWidget {
       this.windy,
       this.iscurrentLocation = true});
 
+  @override
+  _LocationCardState createState() => _LocationCardState();
+}
+
+class _LocationCardState extends State<LocationCard> {
+
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,14 +37,14 @@ class LocationCard extends StatelessWidget {
         child: ListTile(
           title: Row(
             children: <Widget>[
-              iscurrentLocation
+              widget.iscurrentLocation
                   ? Icon(
                       Icons.location_on,
                       color: Theme.of(context).accentColor,
                     )
                   : null,
               Text(
-                location,
+                widget.location,
                 style: TextStyle(
                     color: Theme.of(context).accentColor, fontSize: 18),
               )
@@ -46,11 +54,11 @@ class LocationCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                address,
+                widget.address,
                 style: TextStyle(color: Colors.grey, fontSize: 18),
               ),
               Text(
-                'Tue, 07 January 21:38',
+                CurrentDate.todaysDate(),
                 style: TextStyle(color: Colors.grey, fontSize: 16),
               )
             ],
@@ -68,13 +76,13 @@ class LocationCard extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    weatherDegree,
+                    widget.weatherDegree,
                     style: TextStyle(color: Colors.grey, fontSize: 30),
                   )
                 ],
               ),
               Text(
-                windy,
+                widget.windy,
                 style: TextStyle(color: Colors.grey, fontSize: 16),
               )
             ],

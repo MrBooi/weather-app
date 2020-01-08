@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
       color: Colors.black,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          // primarySwatch: Colors.black,
           accentColor: Colors.white,
           primaryColor: Colors.black),
       home: WeatherScreen(),
