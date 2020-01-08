@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-const GOOGLE_API_KEY = 'AIzaSyDliNiQuKc8bs3Zz2_bkzBJAJTYypDSuYg';
+const GOOGLE_API_KEY = 'Your API HERE';
 
 class LocationHelper {
   static Future<String> getPlaceAddress(
